@@ -2,22 +2,23 @@
 
 using namespace std;
 
-int find(string str, char letter){
+int find(string str, char letter, int start = 0){
     int index;
 
-    for(int i = 0; i < str.size(); i++){
-        if(letter == str[i]){
-            index = i;
+    for(int i = start; i < str.size(); i++){
 
+        if(start > str.size()){
             break;
         }
 
-        else{
-            index = -1;
+        else if(letter == str[i]){
+            index = i - start;
+
+            return index;
         }
     }
 
-    return index;
+    return -1;
 }
 
 int find(string str, string str2){
@@ -40,7 +41,14 @@ int find(string str, string str2){
 
 int main(){
 
-    cout << find("The fox", "foxe");
+    cout << "\n" << find("The fox", 'f') << "\n";
+    cout << "\n" << find("The fox", 'f', 0) << "\n";
+    cout << "\n" << find("The fox", 'f', 1) << "\n";
+    cout << "\n" << find("The fox", 'f', 2) << "\n";
+    cout << "\n" << find("The fox", 'f', 4) << "\n";
+    cout << "\n" << find("The fox", 'f', 5) << "\n";
+    cout << "\n" << find("The fox", 'f', 7) << "\n";
+
 
     return 0;
 
